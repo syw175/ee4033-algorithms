@@ -116,37 +116,36 @@
 \normalsize
 
 \begin{enumerate}
-  \item {\textbf{Exercise 2.2-2}}
-  \item {\textbf{Exercise 2.3-3}}
-  \item {\textbf{Problem 2-3}}
+  \item {\textbf{Exercise 2.2$-$2}} The answer to this problem goes here.
+\begin{algorithm}
+    \caption{Selection Sort Pseudocode}
+    \label{algo:algo_example}
+    \begin{algorithmic}[1]
+        \Require{$ \mathbf{x}  = x_1, x_2, \ldots, x_N$}
+        \Ensure{$EvenSum$ (Sum of even numbers in $ \mathbf{x} $)}
+        \Statex
+        \Function{EvenSummation}{$\mathbf{x}$}
+        \State {$EvenSum$ $\gets$ {$0$}}
+        \State {$N$ $\gets$ {$length(\mathbf{x})$}}
+        \For{$i \gets 1$ to $N$}                    
+        \If{$ x_i\mod 2 == 0$}  \Comment check if a number is even?
+        \State {$EvenSum$ $\gets$ {$EvenSum + x_i$}}
+        \EndIf
+        \EndFor
+        \State \Return {$EvenSum$}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+  \item {\textbf{Exercise 2.3$-$3}}
+  \item {\textbf{Problem 2$-$3}}
   \item {\textbf{Prove or disprove $f(n) + g(n) = \Theta(\text{max}(f(n), g(n)))$}}
   \item {\textbf{Problem 3.3a}}
-  \item {Exercise 4.1-5}
-  \item {Exercise 4.2-4}
-  \item {Exercise 4.3-7}
-  \item {Exercise 4.4-9}
-  \item {Problem 4.3bfhj}
+  \item {\textbf{Exercise 4.1$-$5}}
+  \item {\textbf{Exercise 4.2$-$4}}
+  \item {\textbf{Exercise 4.3$-$7}}
+  \item {\textbf{Exercise 4.4$-$9}}
+  \item {\textbf{Problem 4.3bfhj}}
   
 \end{enumerate}
-% \textbf{Example of an algorithm in \LaTeX}
-% Algorithm~\ref{algo:algo_example} is a good example of an algorithm in \LaTeX.  
-% \begin{algorithm}
-%     \caption{Example caption: sum of all even numbers}
-%     \label{algo:algo_example}
-%     \begin{algorithmic}[1]
-%         \Require{$ \mathbf{x}  = x_1, x_2, \ldots, x_N$}
-%         \Ensure{$EvenSum$ (Sum of even numbers in $ \mathbf{x} $)}
-%         \Statex
-%         \Function{EvenSummation}{$\mathbf{x}$}
-%         \State {$EvenSum$ $\gets$ {$0$}}
-%         \State {$N$ $\gets$ {$length(\mathbf{x})$}}
-%         \For{$i \gets 1$ to $N$}                    
-%         \If{$ x_i\mod 2 == 0$}  \Comment check if a number is even?
-%         \State {$EvenSum$ $\gets$ {$EvenSum + x_i$}}
-%         \EndIf
-%         \EndFor
-%         \State \Return {$EvenSum$}
-%         \EndFunction
-%     \end{algorithmic}
-% \end{algorithm}
+
 \end{document}
