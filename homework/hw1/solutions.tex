@@ -116,26 +116,34 @@
 \normalsize
 
 \begin{enumerate}
-  \item {\textbf{Exercise 2.2$-$2}} The answer to this problem goes here.
+  \item {\textbf{Exercise 2.2$-$2}} The loop invariant is that for any iteration $i$, the smallest $i-1$ elements
+  will be sorted in ascending order. Thus, we only need to run the algorithm on the first $n-1$
+  elements because the smallest $n-1$ elements will be sorted at that point. In other words, the $n$th 
+  remaining number must be the greatest in our array. In both best and worst cases, the running time of the
+  algorithm is $\theta(n^2)$.
 \begin{algorithm}
     \caption{Selection Sort Pseudocode}
-    \label{algo:algo_example}
     \begin{algorithmic}[1]
-        \Require{$ \mathbf{x}  = x_1, x_2, \ldots, x_N$}
-        \Ensure{$EvenSum$ (Sum of even numbers in $ \mathbf{x} $)}
+        \Require Unsorted Array $\mathbf{x}$
+        \Ensure Sorted Ascending Order Array $\mathbf{x}$
         \Statex
-        \Function{EvenSummation}{$\mathbf{x}$}
-        \State {$EvenSum$ $\gets$ {$0$}}
-        \State {$N$ $\gets$ {$length(\mathbf{x})$}}
-        \For{$i \gets 1$ to $N$}                    
-        \If{$ x_i\mod 2 == 0$}  \Comment check if a number is even?
-        \State {$EvenSum$ $\gets$ {$EvenSum + x_i$}}
-        \EndIf
+        \Function{SelectionSort}{$\mathbf{x}$}
+          \For{$i \gets 0$ to length(x)$-1$}
+          \State{$smallest \gets x[i]$}
+          \For{$j \gets i+1$ to length(x)}
+            \If{$x[j] < smallest$}
+            \State {$smallest \gets x[j]$}
+            \EndIf
+          \EndFor
+          % Swap the smallest element with x[i]
+          \State {$x[i] \gets smallest$}
+          \State {$x[j] \gets x[i]$}
         \EndFor
-        \State \Return {$EvenSum$}
+        \State \Return {$x$}
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
+
   \item {\textbf{Exercise 2.3$-$3}}
   \item {\textbf{Problem 2$-$3}}
   \item {\textbf{Prove or disprove $f(n) + g(n) = \Theta(\text{max}(f(n), g(n)))$}}
