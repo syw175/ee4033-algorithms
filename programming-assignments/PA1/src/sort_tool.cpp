@@ -11,10 +11,12 @@
 // Constructor
 SortTool::SortTool() {}
 
-// Insertsion sort method
+// Insertion sort method
 void SortTool::InsertionSort(vector<int>& data) {
     // Function : Insertion sort
-    // TODO : Please complete insertion sort code here
+
+    
+
 }
 
 // Quick sort method
@@ -68,14 +70,38 @@ void SortTool::HeapSort(vector<int>& data) {
 }
 
 //Max heapify
+// NEED TO RUN TEST CASES
 void SortTool::MaxHeapify(vector<int>& data, int root) {
     // Function : Make tree with given root be a max-heap if both right and left sub-tree are max-heap
-    // TODO : Please complete max-heapify code here
+    // Calculate index values for left and right child nodes
+    int left = 2 * root + 1;
+    int right = 2 * root + 2;
+    int largestIndex = root;
+
+    // If there is only one node in the tree
+    if (left >= heapSize && right >= heapSize)
+        return;
+
+    // Calculate the largest value between root, left child, and right child
+    if (left < heapSize && data[left] > data[largestIndex])
+        largestIndex = left;
+    if (right < heapSize && data[right] > data[largestIndex])
+        largestIndex = right;
+    
+    // For the case that the root is non-max value, continue heapify
+    if (largestIndex != root)
+    {
+        swap(data[root], data[largestIndex]);
+        MaxHeapify(data, largestIndex);
+    }
 }
 
 //Build max heap
+// TO RUN TEST CASES
 void SortTool::BuildMaxHeap(vector<int>& data) {
     heapSize = data.size(); // initialize heap size
     // Function : Make input data become a max-heap
-    // TODO : Please complete BuildMaxHeap code here
+    // Start from the last parent node and heapify
+    for (int i = (heapSize - 1) / 2; i >= 0; i--)
+        MaxHeapify(data, i);
 }
