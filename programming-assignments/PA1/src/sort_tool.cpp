@@ -12,11 +12,25 @@
 SortTool::SortTool() {}
 
 // Insertion sort method
+// TO RUN TEST CASES
 void SortTool::InsertionSort(vector<int>& data) {
     // Function : Insertion sort
-
-    
-
+    // Iterate through the vector from the second element to the last element
+    for (int i = 1; i < data.size(); i++)
+    {
+        int temp = data[i];
+        // Iterate through the sorted partition from the last to the first element
+        int j = i - 1;
+        while (j >= 0 && data[j] > temp)
+        {
+            // Shift the element to the right if it is greater than the current element
+            data[j + 1] = data[j];
+            j--;
+        }
+        // At this point, we have either reached the beginning of the array or data[j] <= temp
+        data[j + 1] = temp;
+    }
+    return;
 }
 
 // Quick sort method
@@ -70,7 +84,7 @@ void SortTool::HeapSort(vector<int>& data) {
 }
 
 //Max heapify
-// NEED TO RUN TEST CASES
+// TO RUN TEST CASES
 void SortTool::MaxHeapify(vector<int>& data, int root) {
     // Function : Make tree with given root be a max-heap if both right and left sub-tree are max-heap
     // Calculate index values for left and right child nodes
