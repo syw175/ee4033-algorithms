@@ -71,9 +71,16 @@ void SortTool::MergeSort(vector<int>& data)
 void SortTool::MergeSortSubVector(vector<int>& data, int low, int high)
 {
     // Function : Merge sort subvector
-    // TODO : Please complete MergeSortSubVector code here
-    // Hint : recursively call itself
-    //        Merge function is needed
+    if (low < high)
+    {
+        // Calculate the middle index
+        int middle = (low + high) / 2;
+        // Recursively sort the subvectors
+        MergeSortSubVector(data, low, middle);
+        MergeSortSubVector(data, middle + 1, high);
+        // Merge the two sorted subvectors
+        Merge(data, low, middle, middle + 1, high);
+    }
 }
 
 // Merge
