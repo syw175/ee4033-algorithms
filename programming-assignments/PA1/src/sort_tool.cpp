@@ -13,7 +13,8 @@ SortTool::SortTool() {}
 
 // Insertion sort method
 // TO RUN TEST CASES
-void SortTool::InsertionSort(vector<int>& data) {
+void SortTool::InsertionSort(vector<int>& data)
+{
     // Function : Insertion sort
     // Iterate through the vector from the second element to the last element
     for (int i = 1; i < data.size(); i++)
@@ -34,30 +35,41 @@ void SortTool::InsertionSort(vector<int>& data) {
 }
 
 // Quick sort method
-void SortTool::QuickSort(vector<int>& data){
+void SortTool::QuickSort(vector<int>& data)
+{
     QuickSortSubVector(data, 0, data.size() - 1);
 }
 // Sort subvector (Quick sort)
-void SortTool::QuickSortSubVector(vector<int>& data, int low, int high) {
+void SortTool::QuickSortSubVector(vector<int>& data, int low, int high)
+{
     // Function : Quick sort subvector
-    // TODO : Please complete QuickSortSubVector code here
-    // Hint : recursively call itself
-    //        Partition function is needed
+    // If low is smaller than high, then there are at least two elements to sort
+    if (low < high)
+    {
+        // Partition the vector into subvectors based on the pivot
+        int pivot = Partition(data, low, high);
+        // Recursively sort the subvectors
+        QuickSortSubVector(data, low, pivot - 1);
+        QuickSortSubVector(data, pivot + 1, high);
+    }
+    return;
 }
 
-int SortTool::Partition(vector<int>& data, int low, int high) {
+int SortTool::Partition(vector<int>& data, int low, int high)
+{
     // Function : Partition the vector 
-    // TODO : Please complete the function
     // Hint : Textbook page 171
 }
 
 // Merge sort method
-void SortTool::MergeSort(vector<int>& data){
+void SortTool::MergeSort(vector<int>& data)
+{
     MergeSortSubVector(data, 0, data.size() - 1);
 }
 
 // Sort subvector (Merge sort)
-void SortTool::MergeSortSubVector(vector<int>& data, int low, int high) {
+void SortTool::MergeSortSubVector(vector<int>& data, int low, int high)
+{
     // Function : Merge sort subvector
     // TODO : Please complete MergeSortSubVector code here
     // Hint : recursively call itself
@@ -65,18 +77,21 @@ void SortTool::MergeSortSubVector(vector<int>& data, int low, int high) {
 }
 
 // Merge
-void SortTool::Merge(vector<int>& data, int low, int middle1, int middle2, int high) {
+void SortTool::Merge(vector<int>& data, int low, int middle1, int middle2, int high)
+{
     // Function : Merge two sorted subvector
     // TODO : Please complete the function
 }
 
 // Heap sort method
-void SortTool::HeapSort(vector<int>& data) {
+void SortTool::HeapSort(vector<int>& data)
+{
     // Build Max-Heap
     BuildMaxHeap(data);
     // 1. Swap data[0] which is max value and data[i] so that the max value will be in correct location
     // 2. Do max-heapify for data[0]
-    for (int i = data.size() - 1; i >= 1; i--) {
+    for (int i = data.size() - 1; i >= 1; i--)
+    {
         swap(data[0],data[i]);
         heapSize--;
         MaxHeapify(data,0);
@@ -85,7 +100,8 @@ void SortTool::HeapSort(vector<int>& data) {
 
 //Max heapify
 // TO RUN TEST CASES
-void SortTool::MaxHeapify(vector<int>& data, int root) {
+void SortTool::MaxHeapify(vector<int>& data, int root)
+{
     // Function : Make tree with given root be a max-heap if both right and left sub-tree are max-heap
     // Calculate index values for left and right child nodes
     int left = 2 * root + 1;
@@ -112,7 +128,8 @@ void SortTool::MaxHeapify(vector<int>& data, int root) {
 
 //Build max heap
 // TO RUN TEST CASES
-void SortTool::BuildMaxHeap(vector<int>& data) {
+void SortTool::BuildMaxHeap(vector<int>& data)
+{
     heapSize = data.size(); // initialize heap size
     // Function : Make input data become a max-heap
     // Start from the last parent node and heapify
