@@ -55,10 +55,26 @@ void SortTool::QuickSortSubVector(vector<int>& data, int low, int high)
     return;
 }
 
+// UNTESTED
 int SortTool::Partition(vector<int>& data, int low, int high)
 {
     // Function : Partition the vector 
-    // Hint : Textbook page 171
+    int pivot = data[high];
+    int i = low - 1;
+    // Iterate through the vector from the low index to the high index
+    for (int j = low; j < high; j++)
+    {
+        // If the current element <= pivot, swap it with the elemment at index i + 1 
+        if (data[j] <= pivot)
+        {
+            i++;
+            swap(data[i], data[j]);
+        }
+    }
+    // Swap to put the pivot in the correct location
+    swap(data[i + 1], data[high]);
+    // Return the index of the pivot
+    return i + 1;
 }
 
 // Merge sort method
@@ -87,7 +103,9 @@ void SortTool::MergeSortSubVector(vector<int>& data, int low, int high)
 void SortTool::Merge(vector<int>& data, int low, int middle1, int middle2, int high)
 {
     // Function : Merge two sorted subvector
-    // TODO : Please complete the function
+    
+    
+
 }
 
 // Heap sort method
