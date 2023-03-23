@@ -103,9 +103,7 @@ void SortTool::MergeSortSubVector(vector<int>& data, int low, int high)
 void SortTool::Merge(vector<int>& data, int low, int middle1, int middle2, int high)
 {
     // Function : Merge two sorted subvector
-    
-    
-
+    return;
 }
 
 // Heap sort method
