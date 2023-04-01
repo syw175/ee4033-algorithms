@@ -103,7 +103,42 @@ void SortTool::MergeSortSubVector(vector<int>& data, int low, int high)
 void SortTool::Merge(vector<int>& data, int low, int middle1, int middle2, int high)
 {
     // Function : Merge two sorted subvector
-    return;
+    // Create a temporary vector to store the merged vector
+    vector<int> temp;
+    // Initialize the index for the two subvectors
+    int i = low;
+    int j = middle2;
+    // Iterate through the two subvectors and store the smaller element in the temporary vector
+    while (i <= middle1 && j <= high)
+    {
+        if (data[i] < data[j])
+        {
+            temp.push_back(data[i]);
+            i++;
+        }
+        else
+        {
+            temp.push_back(data[j]);
+            j++;
+        }
+    }
+    // If there are still elements in the first subvector, store them in the temporary vector
+    while (i <= middle1)
+    {
+        temp.push_back(data[i]);
+        i++;
+    }
+    // If there are still elements in the second subvector, store them in the temporary vector
+    while (j <= high)
+    {
+        temp.push_back(data[j]);
+        j++;
+    }
+    // Copy the temporary vector to the original vector
+    for (int k = low; k <= high; k++)
+    {
+        data[k] = temp[k - low];
+    }
 }
 
 // Heap sort method
