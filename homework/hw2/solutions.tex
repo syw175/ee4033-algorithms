@@ -122,7 +122,6 @@
   \begin{algorithm}
     \caption{Heap-Delete Algorithm}
     \begin{algorithmic}[1]
-        \Statex
         \Function{Heap-Delete}{$\mathbf{A, i}$}
         \State{$A[i] \gets A[n]$} % Replace the deleted node with the last node
         \State{$n \gets n-1$} % Decrease the heap size by 1
@@ -133,35 +132,53 @@
 
   % Question 2
   \item {\textbf{Exercise 7.2$-$3}}
-  The worst case running time of Quicksort is $\Theta\left(n^2\right)$ for a descending order array when the selection of the pivot is always the right element. 
+  The worst case running time of Quicksort is $\Theta\left(n^2\right)$ for a descending order array when the slection of the pivot is always the right element. 
   In this case, each iteration of Partition reduces the size of the sub-array by 1. Thus, we have a recurrence relation equal to 
   \[T(n-1)+\Theta(n) = \Theta(n^2)\]
 
   % Question 3
   \item {\textbf{Modified Exercise 8.2$-$1}}
-  \\
+  \\ \textbf{Do Half with Friend!}
   Using Figure 8.2 in textbook as a model, illustrate the operation of COUNTING-SORT based on the string (array of 16 characters): "NTUEECSALGORITHM". Please mark the two $T$ 's as $T_1$ and $T_2$, and the two $E$ 's as $E_1$ and $E_2$ according to their order in the input, and show their positions during the processing. Assume you have only the 26 characters, $A, B, \ldots, Z$, and thus you may work on the array of the 26 characters.
   
   % Question 4
-  \item {\textbf{Exercise 8.2$-$4}}
-  \\ 
-  Describe an algorithm that, given $n$ integers in the range 0 to $k$, preprocesses its input and then answers any query about how many of the $n$ integers fall into a range $[a \ldots b]$ in $O(1)$ time. Your algorithm should use $\Theta(n+k)$ preprocessing time.
+  \item {\textbf{Exercise 8.2$-$4}} Given $n$ integers in the range of 0 to $k$ as array $A$, create an $k$ sized auxiliary array $B$ initialized to $0$.
+  For each element $i \text{ in} A$ increment $B[A[i]]$. Compute the running sum for each element $i$ in $B$ 
+  and obtain the number of elements less than or equal to $i$. At this point, this is the initial steps in counting sort.
+  To compute the number of elements in range $[a..b]$ we now have an $\Theta(1)$ computation: $B[b] - B[a]$
+  in range $[a..b]$   
   
   % Question 5
-  \item {\textbf{Exercise 9.3$-$7}}
-  \\
-  Describe an $O(n)$-time algorithm that, given a set $S$ of $n$ distinct numbers and a positive integer $k \leq n$, determines the $k$ numbers in $S$ that are closest to the median of $S$.
+  \item {\textbf{Exercise 9.3$-$7}} With the assumption that the set S is a sorted array of elements, we have the median given by
+  index $n/2$. Then the closest $k$ elements must be within the range of $(n-k)/2 \le n/2 \le (n+k)/2$. We can use linear search 
+  to traverse through these indices to find elements greater than $(n-k)/2$, not equal to $n/2$, and less than $(n+k)/2$.
   
   % Question 6
   \item {\textbf{Search Trees}}
-  \\ a. Give the binary search tree that results from successively inserting the keys $8,2,1,6,5,7,9,10$ into an initially empty tree.
-  \\ b. Label each node in the tree with $\mathrm{R}$ or B denoting the respective colors RED and BLACK so that the tree is a legal red-black tree.
-  \\ c. Give the red-black tree that results from inserting the key 4 into the tree of (b).
-  \\ d. Give the red-black tree that results from deleting the key 7 from the tree of (c)
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{6a.png}
+    \caption{Binary Search Tree}\label{fig:6a}
+  \end{figure}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{6b.png}
+    \caption{Red Black Tree}\label{fig:6b}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{6c.png}
+    \caption{Red Black Tree Add 4}\label{fig:6c}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{6d.png}
+    \caption{Red Black Tree Remove 7}\label{fig:6d}
+  \end{figure}
   
   % Question 7
   \item {\textbf{Dynamic Programming Implementations}}
-  \\ a. Find an optimal parenthesization o a matrix-chain product whose sequence of dimensions is < 3, 5, 7, 9, 11 >.
+  \\ a. Find an optimal parenthesization to a matrix-chain product whose sequence of dimensions is < 3, 5, 7, 9, 11 >.
   \\ b. Determine an LCS of < C, A, B, A, C, B, D > and < A, D, B, A, C, D >.
   \\ c. Determine the cost and structure of an optimal binary search tree for a set of $n=6$ keys with the following probabilities: $p_i=0.05,0.09,0.10,0.05,0.12,0.15, i=1, . ., 6$, respectively, and $q_i=$ $0.03,0.06,0.07,0.11,0.08,0.05,0.04, i=0, \ldots, 6$, respectively
   
@@ -174,30 +191,6 @@
   % Question 9
   \item {\textbf{(20 pts) Let $X=x_1 x_2 \ldots x_m$ and $Y=y_1 y_2 \ldots y_n$ be two character strings. This problem asks you to find the maximum common substring length for $X$ and $Y$. Notice that substrings are required to be contiguous in the original strings. For example, photograph and tomography have common substrings $p h$, to, ograph, etc. The maximum common substring length is 6 .}}
   \\ a. (a) (4 pts) The following gives the computation of the maximum common suffix and substring lengths on the two strings, $A B A B$ and $B A B$, similar to the table used for computing the length of LCS in class. Only partial results are given. Please complete all the entries in the table.
-  \begin{tabular}{|l|l|l|l|l|l|}
-  \hline & & A & B & A & B \\
-  \hline & 0 & 0 & 0 & 0 & 0 \\
-  \hline B & 0 & 0 & & & \\
-  \hline A & 0 & & & & \\
-  \hline B & 0 & & & & \\
-  \hline
-  \end{tabular}
-  \begin{tabular}{|c|c|c|c|c|c|}
-  \hline & & A & B & A & B \\
-  \hline & 0 & 0 & 0 & 0 & 0 \\
-  \hline B & 0 & 0 & & & \\
-  \hline A & 0 & & & & \\
-  \hline B & 0 & & & & \\
-  \hline
-  \end{tabular}
-  Longest common suffix
-  Longest common substring
-  \\ b. (5 pts) Dynamic programming can be used to find the longest common substring efficiently. The idea is to find length of the longest common suffix for all substrings of both strings. Suppose $\gamma=\alpha \beta$ is the concatenation of two strings; we say that $\beta$ is a suffix. Find the optimal substructure for the longest common suffix problem (a recurrence relation for $\operatorname{LCSuff}(X, Y, m, n)$ ).
-  \\ c. $$ \text { (5 pts) Define the longest common substring length } \operatorname{LCSubStr}(X, Y, m, n) \text { in terms of } \operatorname{LCSuff}(X, Y, i, j) \text {. } $$
-  \\ d. (6 pts) Give a dynamic programming algorithm for solving this problem. What are the time and space complexity of your algorithm?
 
-
-
-    
 \end{enumerate}
 \end{document}
