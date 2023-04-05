@@ -147,7 +147,7 @@
   $$ 1-1-2-2-4-4-5-6-7-7-7-8-9-10-11-11-11-12-13-15-16-16-16-16-16-16$$
 
   Finally, I used the index array to sort the original array into the following result:
-  $$ A-C-E_1-E-2-G-H-I-L-M-N-O-P-R-S-T_1-T_2-U$$
+  $$ A-C-E_1-E_2-G-H-I-L-M-N-O-P-R-S-T_1-T_2-U$$
   
   % Question 4
   \item {\textbf{Exercise 8.2$-$4}} Given $n$ integers in the range of 0 to $k$ as array $A$, create an $k$ sized auxiliary array $B$ initialized to $0$.
@@ -186,16 +186,16 @@
   
   % Question 7
   \item {\textbf{Dynamic Programming Implementations}}
-  \\ a. Find an optimal parenthesization to a matrix-chain product whose sequence of dimensions is < 3, 5, 7, 9, 11 >.
+  \\ a. Find an optimal parenthesization to a matrix-chain product whose sequence of dimensions is $<$ 3, 5, 7, 9, 11 $>$.
   \\ b. Determine an LCS of < C, A, B, A, C, B, D > and < A, D, B, A, C, D >.
   \\ c. Determine the cost and structure of an optimal binary search tree for a set of $n=6$ keys with the following probabilities: $p_i=0.05,0.09,0.10,0.05,0.12,0.15, i=1, . ., 6$, respectively, and $q_i=$ $0.03,0.06,0.07,0.11,0.08,0.05,0.04, i=0, \ldots, 6$, respectively
   
   % Question 8
-  \item {\textbf{(20 pts) Given a log of wood of length $k$, Woody the woodcutter will cut it once, in any place you choose, for the price of $k$ dollars. Suppose you have a log of length $L$, marked to be cut in $n$ different locations labeled $1,2, \ldots, n$. For simplicity, let indices 0 and $n+1$ denote the left and right endpoints of the original log of length $L$. Let the distance of mark $i$ from the left end of the log be $d_i$, and assume that $0=d_0<d_1<d_2<\ldots<d_n<d_{n+1}=L$. The wood-cutting problem is the problem of determining the sequence of cuts to the $\log$ that will (1) cut the log at all the marked places, and (2) minimize your total payment to Woody.}}
-  \\ a. (4 pts) Give an example with $L=4$ illustrating that two different sequences of cuts to the same marked log can result in two different costs.
-  \\ b. (9 pts) Let $c(i, j)$ be the minimum cost of cutting a log with left endpoint $i$ and right endpoint $j$ at all its marked locations. Suppose the log is cut at position $m$, somewhere between $i$ and $j$. Define the recurrence of $c(i, j)$ in terms of $i, m, j, d_i$, and $d_j$. Briefly justify your answer.
-  \\ c. (7 pts) Using part (b), give an efficient algorithm to solve the wood-cutting problem. Use a table $C$ of size $(n+1) \times(n+1)$ to hold the values $C[i][j]=c(i, j)$. What is the running time of your algorithm?
-  
+  \item {\textbf{Logger's Question}}
+  \\ a. Suppose you have a log of length $L=4$ and $n=3$ marked locations at some arbitary locations $d_1, d_2$ and $d_3$ representing the endpoint of the log. Without loss of generality,
+  cutting the log at $d_1$ first will result in a cost of $k = d_3 + d_2 - d_1$. Cutting the log at $d_2$ first will result in a cost of $k = d_3 + d_2$. 
+  \\ b. We obtain the following recurrence: $c(i, j) = c(i,m) + c(m,j) + (d_j-d_i)$ 
+  \\ c.   
   % Question 9
   \item {\textbf{(20 pts) Let $X=x_1 x_2 \ldots x_m$ and $Y=y_1 y_2 \ldots y_n$ be two character strings. This problem asks you to find the maximum common substring length for $X$ and $Y$. Notice that substrings are required to be contiguous in the original strings. For example, photograph and tomography have common substrings $p h$, to, ograph, etc. The maximum common substring length is 6 .}}
   \\ a. (a) (4 pts) The following gives the computation of the maximum common suffix and substring lengths on the two strings, $A B A B$ and $B A B$, similar to the table used for computing the length of LCS in class. Only partial results are given. Please complete all the entries in the table.
