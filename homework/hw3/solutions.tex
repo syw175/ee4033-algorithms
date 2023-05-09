@@ -1,0 +1,185 @@
+%%%%     SETTING STARTS - DO NOT CHANGE Unless your TeX setting require so   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%----------------------------------------------------------------------------------
+% DO NOT Change this. It is the required setting A4 page, 11pt, onside print, book style
+%%----------------------------------------------------------------------------------
+\documentclass[a4paper,11pt,oneside]{book}
+
+%%-------------------------------------
+%% Page margin settings - % half inch margin all sides (recommended)
+%%-------------------------------------
+\usepackage[margin=1.2in]{geometry} 
+
+%%-------------------------------------
+%% Font settings - % CM San or Ariel (recommended)
+%%-------------------------------------
+% Switch the following two line off: to revert back to default LaTex font (NOT recommended)
+\usepackage{amsfonts}
+\renewcommand*\familydefault{\sfdefault}
+
+%%-------------------------------------
+%% Math/Definition/Theorem/Algorithm packages settings 
+%%-------------------------------------
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{lmodern}
+\newtheorem{mydef}{Definition}
+\newtheorem{mytherm}{Theorem}
+%%-------------------------------------
+%% Algorithms/Code Listing environment settings  - 
+%% Please do not change these settings
+%%-------------------------------------
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0.1}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0.10,0.00,1.00}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1.0,1.0,1.0}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                        
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=none
+}
+\lstset{style=mystyle}
+
+%%-------------------------------------
+%% Graphics/Figures environment settings
+%%-------------------------------------
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{lipsum}
+
+%%-------------------------------------
+%% Table environment settings
+%%-------------------------------------
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{makecell}
+\usepackage{booktabs}
+%\usepackage{longtable,booktabs}
+
+%%-------------------------------------
+%% List of Abbreviations settings
+%%-------------------------------------
+\usepackage{enumitem}
+\newlist{abbrv}{itemize}{1}
+\setlist[abbrv,1]{label=,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
+
+%%-------------------------------------
+%% Bibliography/References settings   - Harvard Style was used in this report
+%%-------------------------------------
+\usepackage[hidelinks]{hyperref}
+\usepackage[comma,authoryear]{natbib}
+\renewcommand{\bibname}{References} % DO NOT remove or switch of 
+
+%%-------------------------------------
+%% Appendix settings     
+%%-------------------------------------
+\usepackage[toc]{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%                     SETTING ENDS                                            %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\fancyhf{}
+\fancyhead[L]{EE4033-Algorithms Spring 2023}
+\fancyhead[R]{Steven Wong, T11705207}
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+
+\begin{document}
+\noindent\makebox[\textwidth][c]{\Large\bfseries Homework Assignment 3 (No Collaborators)}
+\normalsize
+
+% Question 1
+\begin{enumerate}
+  \item {\textbf{Exercise 16.1$-$4}} Suppose that we have a set of activities to schedule among a large number of lecture halls,
+  where any activity can take place in any lecture hall. We wish to schedule all the activities using
+  as few lecture halls as possible. Give an efficient greedy algorithm to determine which activity
+  should use which lecture hall.(This problem is also known as the interval-graph coloring problem. We can create an interval
+  graph whose vertices are the given activities and whose edges connect incompatible activities.
+  The smallest number of colors required to color every vertex so that no two adjacent vertices
+  have the same color corresponds to finding the fewest lecture halls needed to schedule all of the
+  given activities).
+
+  % Question 2
+  \item {\textbf{Exercise 16.2$-$2}} Prove that the fractional knapsack problem has the greedy-choice property.
+  
+  % Question 3
+  \item {\textbf{Exercise 16.2$-$7}} Suppose you are given two sets $\mathrm{A}$ and $\mathrm{B}$, each containing $\mathrm{n}$ positive integers. You can choose to reorder each set however you like. After reordering, let $a_i$ be the ith element of set $\mathrm{A}$, and let $\mathrm{b}$ be the ith element of set B. You then receive a payoff of $\prod_{i=1}^n a_i{ }^{b_i}$. Give an algorithm that will maximize your payoff. Prove that your algorithm maximizes the payoff, and state its running time.
+ 
+  % Question 4
+  \item {\textbf{Exercise 16.3$-$8}} Suppose that a data file contains a sequence of 8-bit characters such that all 256 characters are
+  about equally common: the maximum character frequency is less than twice the minimum
+  character frequency. Prove that Huffman coding in this case is no more efficient than using an
+  ordinary 8-bit fixed-length code.
+
+  % Question 5
+  \item {\textbf{Exercise 17$-$2}} Binary search of a sorted array takes logarithmic search time, but the time to insert a new
+  element is linear in the size of the array. We can improve the time for insertion by keeping
+  several sorted arrays. Specifically, suppose that we wish to support SEARCH and INSERT on a
+  set of $n$ elements. Let $k=\lceil\lg (n+1)\rceil$, and let the binary representation of $n$ be $\left\langle n_{k-1}, n_{k-2}, \ldots, n_0\right\rangle$. We have $k$ sorted arrays $A_0, A_1, \ldots, A_{k-1}$, where for $\mathrm{i}=0,1, \ldots, k-1$, the length of array $A_i$ is $2^{\mathrm{i}}$. Each array is either full or empty, depending on whether $n_i=1$ or $\mathrm{n}_{\mathrm{i}}=0$, respectively. The total number of elements held in all $\mathrm{k}$ arrays is therefore $\sum_{\mathrm{i}=0}^{\mathrm{k}-1} \mathrm{n}_{\mathrm{i}} 2^{\mathrm{i}}=\mathrm{n}$. Although each individual array is sorted, elements in different arrays bear no particular relationship to each other.
+a. Describe how to perform the SEARCH operation for this data structure. Analyze its worstcase running time.
+b. Describe how to perform the INSERT operation. Analyze its worst-case and amortized running times.
+c. Discuss how to implement DELETE.
+
+
+  % Question 6
+  \item {\textbf{Exercise 22.2$-$7}} There are two types of professional wrestlers: “babyfaces” (“good guys”) and “heels” (“bad guys”).
+  Between any pair of professional wrestlers, there may or may not be a rivalry. Suppose we have $n$
+  professional wrestlers and we have a list of $r$ pairs of wrestlers for which there are rivalries. Give an
+  $\mathcal{O}(n+r)$ time algorithm that determines whether it is possible to designate some of the wrestlers as
+  babyfaces and the remainder as heels such that each rivalry is between a babyface and a heel. If it is
+  possible to perform such a designation, your algorithm should produce it.
+
+  % Question 7
+  \item {\textbf{Exercise 22.3$-$6}} Show that in an undirected graph, classifying an edge $(u, v)$ as a tree edge or a back edge
+  according to whether $(u, v)$ or $(v, u)$ is encountered first during the depth-first search is
+  equivalent to classifying it according to the ordering of the four types in the classification scheme
+
+  % Question 8 
+  \item {\textbf{Exercise 22.4$-$3}} Give an algorithm that determines whether or not a given undirected graph $G=(V, E)$ contains a cycle. Your algorithm should run in $O(V)$ time, independent of $|E|$.
+
+  % Question 9
+  \item {\textbf{Exercise 22.5$-$6}} Given a directed graph $G=(V, E)$, explain how to create another graph $G^{\prime}=\left(V, E^{\prime}\right)$ such that (a) $G^{\prime}$ has the same strongly connected components as $G$, (b) $G^{\prime}$ has the same component graph as $G$, and (c) $E^{\prime}$ is as small as possible. Describe a fast algorithm to compute $G^{\prime}$.
+  
+  % Question 10
+  \item {\textbf{Exercise 23.1$-$10}} Given a graph $G$ and a minimum spanning tree $T$, suppose that we decrease the weight of one of the edges in $T$. Show that $T$ is still a minimum spanning tree for $G$. More formally, let $T$ be a minimum spanning tree for $G$ with edge weights given by weight function $\omega$. Choose one edge $(x, y) \in T$ and a positive number $k$, and define the weight function $\omega^{\prime}$ by
+  $$
+  \omega^{\prime}(u, v)= \begin{cases}w(u, v) & \text { if }(u, v) \neq(x, y) \\ w(x, y)-k & \text { if }(u, v)=(x, y)\end{cases}
+  $$
+  Show that $T$ is a minimum spanning tree for $G$ with edges weights given by $\omega^{\prime}$.
+  
+  % Question 11
+  \item {\textbf{Exercise 23.2$-$4}} Suppose that all edge weights in a graph are integers in the range from 1 to $|V|$. How fast can you make
+  Kruskal's algorithm run? What if the edge weights are integers in the range from 1 to $w$ for some constant
+  $w$?
+  
+  
+\end{enumerate}
+\end{document}
